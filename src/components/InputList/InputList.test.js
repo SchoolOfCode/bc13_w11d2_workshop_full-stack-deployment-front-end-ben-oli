@@ -14,6 +14,6 @@ describe("Check out input component has a button", () => {
     let button = screen.getByRole("button");
 
     // assert
-    expect(button).toHaveTextContent("buttonText");
+    expect(button).toHaveTextContent(buttonText);
   });
 });
