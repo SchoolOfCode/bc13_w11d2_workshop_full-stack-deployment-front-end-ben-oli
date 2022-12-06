@@ -8,8 +8,8 @@ and clear all of the items in a list.
 2. In order for the components to interact with one another, some functionality will need to be hoisted into the App component
  */
 
-const url = process.env.REACT_APP_BACKEND_URL ?? "http://localhost:4000";
-// const url = "http://localhost:4000";
+// const url = process.env.REACT_APP_BACKEND_URL ?? "http://localhost:4000";
+const url = "http://localhost:4000";
 
 function App() {
   const [list, setList] = useState([]);
@@ -46,7 +46,15 @@ function App() {
     const data = await response.json();
     const listItemWithId = data.payload;
 
-    setList((previous) => [...previous, listItemWithId]);
+    // if the data payload we get back has a value of true
+    if (data.success) {
+      // we know everything went ok, and we can safely add our new item to our state
+      setList((previous) => [...previous, listItemWithId]);
+    } else {
+      // alert the user of the error that happened
+      // with the error message we got back from the server.
+      alert(data.error);
+    }
   }
 
   function clearList() {
