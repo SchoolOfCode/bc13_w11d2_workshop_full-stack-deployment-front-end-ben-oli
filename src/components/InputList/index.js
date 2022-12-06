@@ -9,7 +9,6 @@ import "./inputList.css";
 function InputList({ addToList, buttonText }) {
   const [input, setInput] = useState(""); // Here is where the input field is tracked for list adding goodness.
 
-  const unused = "Im not being used";
   function handleInput(event) {
     // This function tracks the string information typed into the input field.
     const value = event.target.value;
